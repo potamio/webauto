@@ -5,7 +5,7 @@
     role="listitem"
     :class="[
       active ? color : 'hoverable',
-      small ? 'p-2' : 'py-2 px-4',
+      'p-1',
       { 'pointer-events-none bg-opacity-75': disabled },
     ]"
   >

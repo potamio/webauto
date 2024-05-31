@@ -21,9 +21,7 @@
             type="text"
             class="h-full flex-1 rounded-lg bg-transparent px-2 focus:ring-0"
             :placeholder="
-              paramsState.active
-                ? paramsState.workflow.name
-                : '搜索工作流...'
+              paramsState.active ? paramsState.workflow.name : '搜索工作流...'
             "
             @input="onInput"
             @keydown="onInputKeydown"
@@ -98,26 +96,9 @@
                 @mouseenter="state.selectedIndex = index"
                 @click="executeWorkflow(workflow)"
               >
-                <div class="w-8">
-                  <img
-                    v-if="workflow.icon?.startsWith('http')"
-                    :src="workflow.icon"
-                    class="overflow-hidden rounded-lg"
-                    style="height: 26px; width: 26px"
-                    alt="Can not display"
-                  />
-                  <v-remixicon
-                    v-else
-                    :name="workflow.icon || 'riGlobalLine'"
-                    size="26"
-                  />
-                </div>
                 <div class="mx-2 flex-1 overflow-hidden">
                   <p class="text-overflow">
                     {{ workflow.name }}
-                  </p>
-                  <p class="text-overflow leading-tight text-gray-500">
-                    {{ workflow.description }}
                   </p>
                 </div>
                 <v-remixicon
@@ -346,6 +327,9 @@ function onKeydown(event) {
       state.active = false;
     }
     return;
+  }
+  if (key === 'Enter') {
+    executeWorkflowWithParams();
   }
 
   const shortcuts = window._automaShortcuts;

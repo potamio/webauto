@@ -38,7 +38,7 @@ html.dark {
 
 body, :host {
   font-family: 'Inter var' !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   @apply bg-gray-50 dark:bg-gray-900 leading-normal;
 }
@@ -91,7 +91,7 @@ pre {
   font-size: 15px;
 }
 
-.scroll, 
+.scroll,
 .scroll .cm-scroller {
   &::-webkit-scrollbar {
     width: 7px;
