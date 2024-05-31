@@ -23,7 +23,7 @@
             :placeholder="
               paramsState.active
                 ? paramsState.workflow.name
-                : 'Search workflows...'
+                : '搜索工作流...'
             "
             @input="onInput"
             @keydown="onInputKeydown"
@@ -227,9 +227,13 @@ const paramsState = reactive({
 const rootElement = inject('rootElement');
 
 const workflows = computed(() =>
-  state.workflows.filter((workflow) =>
-    workflow.name.toLocaleLowerCase().includes(state.query.toLocaleLowerCase())
-  )
+  state.workflows
+    .filter((workflow) =>
+      workflow.name
+        .toLocaleLowerCase()
+        .includes(state.query.toLocaleLowerCase())
+    )
+    .sort((a, b) => a.name.localeCompare(b.name))
 );
 
 function getReadableShortcut(str) {
